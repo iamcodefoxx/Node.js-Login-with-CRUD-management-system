@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+
+  <section>
+    <div class="container">
+      <div class="subcontainer">
+        <div class="content-padding">
+          <% if (typeof success !="undefined" && success) { %>
+            <div class="title">
+              <h2 style="font-size: 2rem;">Verification success</h2>
+              <br>
+              <p>Your account has been verified. Please use your credentials to login.</p>
+            </div>
+          <% } else { %>
+            <div class="title">
+              <h2 style="font-size: 2rem;">Verification error</h2>
+              <br>
+              <p> <%= message %> </p>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/js/script.js"></script>
+
+  <%- include("partials/footer.ejs") %>

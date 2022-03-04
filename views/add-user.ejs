@@ -1,0 +1,55 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="subcontainer">
+    <div class="content-padding">
+      <div class="flex">
+        <a href="/admin">Admin</a> / <p>New User</p>
+      </div>
+      <form action="/user/adduser" id="add-user-form" method="POST">
+        <div>
+          <input type="text" id="first-name" name="first_name" maxlength="100" placeholder="First name"
+            value="<%= typeof first_name != 'undefined' ? first_name : '' %>" required>
+        </div>
+        <div>
+          <input type="text" id="last-name" name="last_name" maxlength="100" placeholder="Last name"
+            value="<%= typeof last_name != 'undefined' ? last_name : '' %>" required>
+        </div>
+        <div>
+          <input type="email" id="email" name="email" maxlength="100" placeholder="Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>" required>
+        </div>
+        <div id="password-container">
+          <input type="password" id="password" name="password" maxlength="60" placeholder="Password"
+            value="<%= typeof password != 'undefined' ? password : '' %>" required>
+          <p id="password-strength-text"></p>
+        </div>
+        <div>
+          <input type="password" id="password-confirm" name="password_confirm" maxlength="60" placeholder="Confirm password"
+            required>
+        </div>
+        <div class="admin-user-radios">
+          <div>
+            <label>Admin</label>
+          </div>
+          <div>
+            <input type="radio" name="Admin" value="Yes">
+            <label for="Yes">Yes</label>
+            <br>
+            <input type="radio" name="Admin" value="No">
+            <label for="No">No</label>
+          </div>
+        </div>
+        <div>
+          <button id="account-btn">Add User</button>
+        </div>
+        
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>

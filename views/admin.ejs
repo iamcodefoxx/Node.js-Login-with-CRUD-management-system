@@ -1,0 +1,62 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="subcontainer">
+    <div class="content-padding">
+      <form action="/auth/find" method="POST">
+        <div class="db-search">
+          <div>
+            <h2>User Management System</h2>
+          </div>
+          <div>
+            <input type="text" name="search" placeholder="Search"><button>Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="db-search">
+        <div style="width:fit-content; display: flex; gap: 10px;">
+          <a href="/admin" class="view"><i class="fa-solid fa-eye"></i> All Users</a>
+          <form>
+            <a href="/add-user" class="edit"><i class="fa-solid fa-user-plus"></i> Add User</a>
+          </form>
+        </div>
+      </div>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th class="text-end">Action</th>
+        </tr>
+        <% for(let i=0;i < rows.length;i++) { %>
+          <tr>
+            <td>
+              <%= rows[i].id %>
+            </td>
+            <td>
+              <%= rows[i].first_name %>
+            </td>
+            <td>
+              <%= rows[i].last_name %>
+            </td>
+            <td>
+              <%= rows[i].email %>
+            </td>
+            <td>
+              <%= rows[i].status %>
+            </td>
+            <td class="text-end">
+              <a href="#" class="view"><i class="fa-solid fa-eye"></i> View</a>
+              <a href="#" class="edit"><i class="fa-solid fa-pencil"></i> Edit</a>
+              <a href="#" class="delete"><i class="fa-solid fa-user-minus"></i> Delete</a>
+            </td>
+          </tr>
+          <% } %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,15 @@
+CREATE TABLE `login`.`users` (
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `first_name` VARCHAR(100),
+  `last_name` VARCHAR(100),
+  `email` VARCHAR(100),
+  `password` BINARY(60),
+  `token` BINARY(20),
+  `token_expires` BINARY(13),
+  `account_creation` DATE,
+  `status` VARCHAR(8) DEFAULT 'Inactive', 
+  `admin` VARCHAR(3) DEFAULT 'No',
+
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
