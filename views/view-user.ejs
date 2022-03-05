@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container">
+    <div class="subcontainer">
+      <div class="content-padding">
+
+        <div class="flex">
+          <a href="/admin">Admin</a> / <p>View User</p>
+        </div>
+        <br>
+        <table>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Member Since</th>
+            <th>Admin</th>
+          </tr>
+          <% for(let i=0;i < rows.length;i++) { %>
+            <tr>
+              <td>
+                <%= rows[i].first_name %>
+              </td>
+              <td>
+                <%= rows[i].last_name %>
+              </td>
+              <td>
+                <%= rows[i].email %>
+              </td>
+              <td>
+                <%= rows[i].status %>
+              </td>
+              <td>
+                <%= rows[i].member_since %>
+              </td>
+              <td>
+                <%= rows[i].admin %>
+              </td>
+            </tr>
+            <% } %>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+
+  <%- include("partials/footer.ejs") %>

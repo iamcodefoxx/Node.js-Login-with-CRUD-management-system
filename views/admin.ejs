@@ -1,9 +1,9 @@
 <%- include("partials/header.ejs") %>
-
+    
 <div class="container">
   <div class="subcontainer">
-    <div class="content-padding">
-      <form action="/auth/find" method="POST">
+      <br>
+      <form action="/auth/find-user" method="POST">
         <div class="db-search">
           <div>
             <h2>User Management System</h2>
@@ -15,12 +15,13 @@
       </form>
       <div class="db-search">
         <div style="width:fit-content; display: flex; gap: 10px;">
-          <a href="/admin" class="view"><i class="fa-solid fa-eye"></i> All Users</a>
+          <a href="/admin" class="view"><i class="fa-solid fa-eye"></i> View Users</a>
           <form>
             <a href="/add-user" class="edit"><i class="fa-solid fa-user-plus"></i> Add User</a>
           </form>
         </div>
       </div>
+      <br>
       <table>
         <tr>
           <th>#</th>
@@ -48,15 +49,16 @@
               <%= rows[i].status %>
             </td>
             <td class="text-end">
-              <a href="#" class="view"><i class="fa-solid fa-eye"></i> View</a>
-              <a href="#" class="edit"><i class="fa-solid fa-pencil"></i> Edit</a>
-              <a href="#" class="delete"><i class="fa-solid fa-user-minus"></i> Delete</a>
+              <a href="/view-user/<%= rows[i].id %>" class="view"><i class="fa-solid fa-eye"></i> View</a>
+              <a href="/edit-user/<%= rows[i].id %>" class="edit"><i class="fa-solid fa-pencil"></i> Edit</a>
+              <a href="/del-user/<%= rows[i].id %>" class="delete"><i class="fa-solid fa-user-minus"></i> Delete</a>
             </td>
           </tr>
           <% } %>
       </table>
-    </div>
   </div>
 </div>
+
+<script src="/js/script.js"></script>
 
 <%- include("partials/footer.ejs") %>

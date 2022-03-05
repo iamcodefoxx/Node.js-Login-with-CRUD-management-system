@@ -29,7 +29,25 @@ switch(windowLocation){
     var passwordResetUpdateJS = document.createElement('script');
     passwordResetUpdateJS.type = "text/javascript";
     passwordResetUpdateJS.src = "/js/password-reset-update.js";
-    document.body.append(passwordResetUpdateJS); 
+    document.body.append(passwordResetUpdateJS);
+    break;
+  case "/add-user":
+    var addUserJS = document.createElement('script');
+    addUserJS.type = "text/javascript";
+    addUserJS.src = "/js/addUser.js";
+    document.body.append(addUserJS);
+    break; 
+  case "/auth/add-user":
+    var addUserJS = document.createElement('script');
+    addUserJS.type = "text/javascript";
+    addUserJS.src = "/js/addUser.js";
+    document.body.append(addUserJS);
+    break;
+  case "/admin":
+    var adminJS = document.createElement('script');
+    adminJS.type = "text/javascript";
+    adminJS.src = "/js/admin.js";
+    document.body.append(adminJS);
 }
 
 // HAMBURGER MENU

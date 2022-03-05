@@ -6,7 +6,7 @@
       <div class="flex">
         <a href="/admin">Admin</a> / <p>New User</p>
       </div>
-      <form action="/user/adduser" id="add-user-form" method="POST">
+      <form action="/auth/add-user" id="add-user-form" method="POST">
         <div>
           <input type="text" id="first-name" name="first_name" maxlength="100" placeholder="First name"
             value="<%= typeof first_name != 'undefined' ? first_name : '' %>" required>
@@ -28,28 +28,49 @@
           <input type="password" id="password-confirm" name="password_confirm" maxlength="60" placeholder="Confirm password"
             required>
         </div>
+        <div id="show-password-container">
+          <div>
+            <input type="checkbox" id="show-password">
+            <label for="show-password">Show password</label>
+          </div>
+        </div>
         <div class="admin-user-radios">
           <div>
-            <label>Admin</label>
+            <label><i class="fas fa-exclamation-triangle"></i> <strong>WARNING</strong> - Make this user an admin?</label>
           </div>
           <div>
-            <input type="radio" name="Admin" value="Yes">
+            <input type="radio" name="admin" value="Yes" required>
             <label for="Yes">Yes</label>
             <br>
-            <input type="radio" name="Admin" value="No">
+            <input type="radio" name="admin" value="No" checked required>
             <label for="No">No</label>
           </div>
         </div>
         <div>
-          <button id="account-btn">Add User</button>
+          <button id="account-btn"><i class="fa-solid fa-user-plus" style="color: white;"></i> Add User</button>
         </div>
-        
+        <% if (typeof allParsedErrors !="undefined" && allParsedErrors) { %>
+          <% for(let i=0; i < allParsedErrors.errors.length; i++ ) { %>
+            <div class="alert-message">
+              <%= (allParsedErrors.errors[i].msg) %>
+            </div>
+          <% } %>
+        <% } %>
+        <% if(typeof success !="undefined" && success) { %>
+          <div class="alert-message success">
+            <%= message %>
+          </div>
+        <% } %>
+        <% if(typeof success !="undefined" && !success) { %>
+          <div class="alert-message">
+            <%= message %>
+          </div>
+        <% } %>
       </form>
-
-
     </div>
   </div>
 </div>
 
+<script src="/js/script.js"></script>
 
 <%- include("partials/footer.ejs") %>

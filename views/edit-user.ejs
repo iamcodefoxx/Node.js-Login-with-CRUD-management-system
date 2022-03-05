@@ -1,0 +1,69 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="subcontainer">
+    <div class="content-padding">
+      <div class="flex">
+        <a href="/admin">Admin</a> / <p>Edit User</p>
+      </div>
+      <form action="/auth/update-user/<%= rows[0].id %>" id="edit-user-form" method="POST">
+        <div>
+          <input type="text" id="first-name" name="first_name" maxlength="100" placeholder="First name"
+            value="<%= rows[0].first_name %>" required>
+        </div>
+        <div>
+          <input type="text" id="last-name" name="last_name" maxlength="100" placeholder="Last name"
+            value="<%= rows[0].last_name %>" required>
+        </div>
+        <div>
+          <input type="email" id="email" name="email" maxlength="100" placeholder="Email"
+            value="<%= rows[0].email %>" required>
+        </div>
+        <div class="admin-user-radios">
+          <div>
+            <label><i class="fas fa-exclamation-triangle"></i> <strong>WARNING</strong> - Make this user an
+              admin?</label>
+          </div>
+          <div>
+            <% if(rows[0].admin === "Yes") { %>
+              <input type="radio" name="admin" value="Yes" checked required>
+              <label for="Yes">Yes</label>
+              <br>
+              <input type="radio" name="admin" value="No" required>
+              <label for="No">No</label>
+            <% } else { %>
+              <input type="radio" name="admin" value="Yes" required>
+              <label for="Yes">Yes</label>
+              <br>
+              <input type="radio" name="admin" value="No" checked required>
+              <label for="No">No</label>
+            <% } %>
+          </div>
+        </div>
+        <div>
+          <button id="account-btn"><i class="fa-solid fa-pencil" style="color: white;"></i> Update</button>
+        </div>
+        <% if (typeof allParsedErrors !="undefined" && allParsedErrors) { %>
+          <% for(let i=0; i < allParsedErrors.errors.length; i++ ) { %>
+            <div class="alert-message">
+              <%= (allParsedErrors.errors[i].msg) %>
+            </div>
+          <% } %>
+        <% } %>
+        <% if(typeof success !="undefined" && success) { %>
+            <div class="alert-message success">
+              <%= message %>
+            </div>
+        <% } %>
+        <% if(typeof success !="undefined" && !success) { %>
+          <div class="alert-message">
+            <%= message %>
+          </div>
+        <% } %>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>

@@ -55,7 +55,7 @@ input[type="radio"]:focus{
   box-shadow: none;
 }
 
-input[type="checkbox"]{ width: auto;}
+input[type="checkbox"]{ width: 12px;}
 
 ::-webkit-input-placeholder {
    font-style: italic;
@@ -71,11 +71,13 @@ input[type="checkbox"]{ width: auto;}
 }
 
 button{
-  border: 1px solid lightgray;
+  border: 1px solid black;
   padding: 12px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  color: white;
+  background-color: black;
 }
 
 form{
@@ -229,12 +231,15 @@ th{
   gap: 5px;
 }
 
-#show-password-container{
+#show-password-container, #show-password-container-login{
   width: 375px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 5px;
+}
+
+#show-password-container-login{
+  justify-content: space-between;
 }
 
 #show-password-container label{ font-size: 0.9rem;}
@@ -286,11 +291,12 @@ th{
   border-radius: 5px;
   padding: 4px 6px;
   color: white;
+  border: none;
 }
 
 .view i, .edit i, .delete i{ color: white;}
 
-.view{ background-color: #0275d8;}
+.view{ background-color: #5bc0de;}
 
 .edit{ background-color: #5cb85c;}
 
@@ -298,7 +304,7 @@ th{
 
 /* ADD-USER */
 
-#add-user-form {
+#add-user-form, #edit-user-form {
   width: 375px;
   margin: auto;
 }
@@ -308,6 +314,14 @@ th{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid red;
+   background-color: #ffe6e6;
+   border-radius: 5px;
+   padding: 10px;
+}
+
+.admin-user-radios label{
+  color: red;
 }
 
 @media(max-width:1600px){
