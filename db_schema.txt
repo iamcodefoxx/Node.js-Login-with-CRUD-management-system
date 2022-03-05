@@ -6,7 +6,7 @@ CREATE TABLE `login`.`users` (
   `password` BINARY(60),
   `token` BINARY(20),
   `token_expires` BINARY(13),
-  `account_creation` DATE,
+  `member_since` VARCHAR(10),
   `status` VARCHAR(8) DEFAULT 'Inactive', 
   `admin` VARCHAR(3) DEFAULT 'No',
 
