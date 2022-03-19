@@ -1,7 +1,7 @@
 CREATE TABLE `login`.`users` (
   `id` INT UNSIGNED AUTO_INCREMENT,
-  `first_name` VARCHAR(100),
-  `last_name` VARCHAR(100),
+  `first_name` VARCHAR(25),
+  `last_name` VARCHAR(25),
   `email` VARCHAR(100),
   `password` BINARY(60),
   `token` BINARY(20),
@@ -13,3 +13,5 @@ CREATE TABLE `login`.`users` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
+
+UPDATE user SET admin = "Yes" WHERE id = 1

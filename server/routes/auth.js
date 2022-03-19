@@ -8,9 +8,9 @@ const router = express.Router();
 router.post("/register",
 [
   check("first_name", "First name field cannot be empty.").not().isEmpty(),
-  check("first_name", "First name must be less than 100 characters long.").isLength({min:0, max:100}),
+  check("first_name", "First name must be less than 25 characters long.").isLength({min:0, max:25}),
   check("last_name", "Last name field cannot be empty.").not().isEmpty(),
-  check("last_name", "Last name must be less than 100 characters long.").isLength({min:0, max:100}), 
+  check("last_name", "Last name must be less than 25 characters long.").isLength({min:0, max:25}), 
   check("email", "The email you entered is invalid, please try again.").isEmail().normalizeEmail(),
   check("email", "Email address must be between 4-100 characters long, please try again.").isLength({min:4, max:100}).normalizeEmail(),
   check("password_confirm", "Password confirm field cannot be empty.").not().isEmpty(), 
@@ -24,6 +24,10 @@ router.post("/register",
   }
  })
 ], authController.register);
+
+router.post("/login", authController.login);
+
+router.get("/logout", authController.logout);
 
 router.post("/update-password",
 [ 
@@ -39,19 +43,15 @@ router.post("/update-password",
  })
 ], authController.updatePassword);
 
-router.post("/login", authController.login);
-
-router.get("/logout", authController.logout);
-
-router.post("/reset-email", authController.resetEmail);
+router.post("/password-reset", authController.passwordReset);
 
 router.post("/find-user", authController.isLoggedIn, authController.findUser);
 
 router.post("/add-user", [
   check("first_name", "First name field cannot be empty.").not().isEmpty(),
-  check("first_name", "First name must be less than 100 characters long.").isLength({min:0, max:100}),
+  check("first_name", "First name must be less than 25 characters long.").isLength({min:0, max:25}),
   check("last_name", "Last name field cannot be empty.").not().isEmpty(),
-  check("last_name", "Last name must be less than 100 characters long.").isLength({min:0, max:100}), 
+  check("last_name", "Last name must be less than 25 characters long.").isLength({min:0, max:25}), 
   check("email", "The email you entered is invalid, please try again.").isEmail().normalizeEmail(),
   check("email", "Email address must be between 4-100 characters long, please try again.").isLength({min:4, max:100}).normalizeEmail(),
   check("password_confirm", "Password confirm field cannot be empty.").not().isEmpty(), 
